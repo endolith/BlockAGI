@@ -14,7 +14,7 @@ from duckduckgo_search import DDGS
 
 
 class SearchAnswerSchema(BaseModel):
-    query: str = Field(title="QUESTION", description="A well formed question.")
+    query: str = Field(title="QUESTION", description="A well-formed question.")
 
 
 def DDGSearchAnswerTool():
@@ -25,7 +25,7 @@ def DDGSearchAnswerTool():
     return Tool.from_function(
         name="DuckDuckGoSearchAnswer",
         func=searchAnswerDDG,
-        description="Useful for when you need an answer to a QUESTION on current event over the internet using DuckDuckGo.",
+        description="Useful for when you need an answer to a QUESTION on current events over the internet using DuckDuckGo.",
         args_schema=SearchAnswerSchema,
     )
 
@@ -35,16 +35,16 @@ def DDGSearchAnswerTool():
 
 class SearchLinksSchema(BaseModel):
     query: str = Field(
-        title="TOPIC", description="any topic you want find relevant links."
+        title="TOPIC", description="any topic for which you want to find relevant links."
     )
     limit: Optional[int] = Field(
-        title="NUMBER", description="amount of links you want", default=20
+        title="NUMBER", description="number of links you want", default=20
     )
 
 
 class DDGSearchLinksTool(BaseTool):
     name = "DuckDuckGoSearchLinks"
-    description = "Useful for when you need more links to website that points to information about a TOPIC over the internet using DuckDuckGo."
+    description = "Useful for when you need more links to a website that points to information about a TOPIC over the internet using DuckDuckGo."
     args_schema: Type[SearchLinksSchema] = SearchLinksSchema
     resource_pool: BaseResourcePool = None
 
