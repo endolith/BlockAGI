@@ -10,16 +10,16 @@ from googleapiclient.discovery import build
 
 class GoogleLinksSchema(BaseModel):
     query: str = Field(
-        title="TOPIC", description="any topic you want find relevant links."
+        title="TOPIC", description="any topic for which you want to find relevant links."
     )
     limit: Optional[int] = Field(
-        title="NUMBER", description="amount of links you want", default=20
+        title="NUMBER", description="number of links you want", default=20
     )
 
 
 class GoogleSearchLinksTool(BaseTool):
     name = "GoogleSearchLinks"
-    description = "Useful for when you need more links to website that points to information about a TOPIC over the internet using Google."
+    description = "Useful for when you need more links to a website that points to information about a TOPIC over the internet using Google."
     args_schema: Type[GoogleLinksSchema] = GoogleLinksSchema
     resource_pool: BaseResourcePool = None
 
